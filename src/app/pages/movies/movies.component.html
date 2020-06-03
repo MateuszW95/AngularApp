@@ -1,0 +1,22 @@
+<div fxLayout="row" fxLayoutAlign="center">
+  <mat-card fxFlex="80">
+    <h3>Movies</h3>
+    <mat-selection-list #movie [multiple]="false">
+    <mat-list-option *ngFor="let movie of movies" (click)="onMovieSelected(movie)">
+      <div fxFlex="row">
+        <span fxFlex="50">{{movie.title}}</span>
+        <button fxLayoutAlign="end" mat-icon-button>
+        </button>
+        <div fxFlex="50" fxLayoutAlign="flex-end">
+          <mat-icon class="mat-24">edit</mat-icon>
+          <mat-icon class="mat-24">delete</mat-icon>
+        </div>
+      </div>
+    </mat-list-option>
+    </mat-selection-list>
+    <app-movie-detail [movie]="selectedMovie" (emitter)="onUpdate($event)"></app-movie-detail>
+
+  </mat-card>
+</div>
+
+

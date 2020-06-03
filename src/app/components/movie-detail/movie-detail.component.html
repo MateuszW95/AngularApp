@@ -1,0 +1,28 @@
+<div fxLayout="column" fxLayoutAlign="center">
+  <div *ngIf="movie; else noMovie" fxFlex="100" class="main">
+    <p>Info about: <b>{{movie.title | uppercase}}</b></p>
+    <form>
+      <div fxLayout="row">
+        <label>Title:</label>
+          <input type="text" [(ngModel)]="movie.title" placeholder="Title" name="title" required/>
+      </div>
+      <div fxLayout="row">
+        <label> Description:</label>
+        <textarea [(ngModel)]='movie.description' cols="130" name="description" required></textarea>
+      </div>
+
+      <div fxLayout="row">
+        <label> Rating:</label>
+        <input type="number" min="1" max="10" [(ngModel)]="movie.rating" placeholder="Rating" name="rating" required/>
+      </div>
+
+      <input class="submit-btn" (click)="save()" type="submit" value="Save">
+
+
+    </form>
+  </div>
+
+
+  <ng-template #noMovie>---No movie Selected---</ng-template>
+
+</div>
