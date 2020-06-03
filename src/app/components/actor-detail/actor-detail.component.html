@@ -1,0 +1,12 @@
+<div *ngIf="selectedActor; else noActor">
+  <p>Informacje o: <b>{{selectedActor.name | uppercase}}</b></p>
+  <label>Imie i nazwisko:
+    <input type="text" [(ngModel)]="selectedActor.name" placeholder="Imię i nazwisko"/>
+  </label>
+
+  <p>Średnia ocen: <b>{{calculateAvg()}}</b>, liczba filmów: <b>{{selectedActor.movies.length}}</b></p>
+  <app-actor-movie (add)="addMovie($event)" (delete)="removeMovie($event)"
+                   [movies]="selectedActor.movies"></app-actor-movie>
+</div>
+
+<ng-template #noActor>---Nie wybrano aktora---</ng-template>

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {MovieService} from '../../services/movie-service/movie.service';
 import {Subscription} from 'rxjs';
 import {Movie} from '../../models/movie';
+import {DeleteConfirmDialogComponent} from '../../components/delete-confirm-dialog/delete-confirm-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-movies',
@@ -16,7 +18,7 @@ export class MoviesComponent implements OnInit {
   selectedMovie: Movie;
 
 
-  constructor(private movieService: MovieService) {
+  constructor(private movieService: MovieService, public dialog: MatDialog) {
   }
 
 
@@ -32,8 +34,22 @@ export class MoviesComponent implements OnInit {
     this.selectedMovie = movie;
   }
 
-  onUpdate(movie: Movie) {
-    this.movies[this.movies.indexOf(movie)] = movie;
+  deleteMovie(movie: Movie) {
+    this.movieService.deleteMovie(movie._id).subscribe(data => {
+      this.ngOnInit();
+    });
+  }
+
+  openDialog(movie: Movie): void {
+    const dialogRef = this.dialog.open(DeleteConfirmDialogComponent, {
+      width: '350px',
+      data: movie
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deleteMovie(movie);
+      }
+    });
   }
 
 }

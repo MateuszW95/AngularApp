@@ -1,0 +1,19 @@
+<p>Uzyskane oceny za występ</p>
+
+<ul>
+  <li *ngFor="let movie of movies">
+    <input type="number" [(ngModel)]="movie.value" placeholder="Ocena"/><span> - {{movie.title}} </span>
+    <button (click)="onRemoveClick(movie)">Usuń</button>
+  </li>
+</ul>
+
+<p>Dodaj film:</p>
+<label>Tytuł filmu:
+  <input type="text" [(ngModel)]="newMovieTitle" placeholder="Tytuł filmu"/>
+</label>
+<label> Ocena:
+  <input type="number" [(ngModel)]="newMovieValue" placeholder="Ocena"/>
+</label>
+<button (click)="onAddClick()">Dodaj</button>
+
+

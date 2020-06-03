@@ -1,0 +1,12 @@
+<div fxFlexFill fxLayout="row" fxLayoutAlign="center">
+  <mat-card fxFlex="50" class="example-card">
+    <h3>Lista aktorów:</h3>
+    <ul>
+      <li *ngFor="let item of actors" (click)="onActorSelected(item)" [class.selected]="item===selectedActor">
+        <b>{{item.name}}</b></li>
+    </ul>
+
+    <hr>
+    <app-actor-detail [selectedActor]="selectedActor"></app-actor-detail>
+  </mat-card>
+</div>

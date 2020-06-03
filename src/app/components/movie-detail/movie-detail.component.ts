@@ -9,7 +9,6 @@ import {MovieService} from '../../services/movie-service/movie.service';
 })
 export class MovieDetailComponent implements OnInit {
 
-  @Output() emitter = new EventEmitter<Movie>();
   @Input() movie: Movie;
 
   constructor(private movieService: MovieService) {
@@ -22,7 +21,6 @@ export class MovieDetailComponent implements OnInit {
   save() {
     if (this.movie.title.length > 0 && this.movie.description.length > 0) {
       this.movieService.updateMovie(this.movie).subscribe(data => {
-        this.emitter.emit(this.movie);
       });
     }
   }

@@ -22,6 +22,12 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
+import { DeleteConfirmDialogComponent } from './components/delete-confirm-dialog/delete-confirm-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ActorsComponent } from './pages/hello-world/actors/actors.component';
+import { ActorListComponent } from './pages/actor-list/actor-list.component';
+import { ActorDetailComponent } from './components/actor-detail/actor-detail.component';
+import { ActorMovieComponent } from './components/actor-movie/actor-movie.component';
 
 
 
@@ -31,6 +37,11 @@ import {FormsModule} from '@angular/forms';
     HelloWorldComponent,
     MoviesComponent,
     MovieDetailComponent,
+    DeleteConfirmDialogComponent,
+    ActorsComponent,
+    ActorListComponent,
+    ActorDetailComponent,
+    ActorMovieComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +62,7 @@ import {FormsModule} from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

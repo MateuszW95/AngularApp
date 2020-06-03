@@ -8,13 +8,12 @@
         <button fxLayoutAlign="end" mat-icon-button>
         </button>
         <div fxFlex="50" fxLayoutAlign="flex-end">
-          <mat-icon class="mat-24">edit</mat-icon>
-          <mat-icon class="mat-24">delete</mat-icon>
+          <mat-icon (click)="openDialog(movie)" class="mat-24">delete</mat-icon>
         </div>
       </div>
     </mat-list-option>
     </mat-selection-list>
-    <app-movie-detail [movie]="selectedMovie" (emitter)="onUpdate($event)"></app-movie-detail>
+    <app-movie-detail [movie]="selectedMovie"></app-movie-detail>
 
   </mat-card>
 </div>
