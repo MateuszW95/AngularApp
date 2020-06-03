@@ -2,17 +2,23 @@
   <mat-card fxFlex="80">
     <h3>Movies</h3>
     <mat-selection-list #movie [multiple]="false">
-    <mat-list-option *ngFor="let movie of movies" (click)="onMovieSelected(movie)">
-      <div fxFlex="row">
-        <span fxFlex="50">{{movie.title}}</span>
-        <button fxLayoutAlign="end" mat-icon-button>
-        </button>
-        <div fxFlex="50" fxLayoutAlign="flex-end">
-          <mat-icon (click)="openDialog(movie)" class="mat-24">delete</mat-icon>
+      <mat-list-option *ngFor="let movie of movies" (click)="onMovieSelected(movie)">
+        <div fxFlex="row">
+          <span fxFlex="50">{{movie.title}}</span>
+          <button fxLayoutAlign="end" mat-icon-button>
+          </button>
+          <div fxFlex="50" fxLayoutAlign="flex-end">
+            <mat-icon (click)="openDialog(movie)" class="mat-24">delete</mat-icon>
+          </div>
         </div>
-      </div>
-    </mat-list-option>
+      </mat-list-option>
     </mat-selection-list>
+    <div *ngIf="getTheOldestMovie()">
+      <hr>
+      <p>The oldest movie: <strong>{{getTheOldestMovie().title}}</strong> released
+        <strong>{{getDate(getTheOldestMovie()) | date:'yyyy-MM-dd'}}</strong></p>
+    </div>
+    <hr>
     <app-movie-detail [movie]="selectedMovie"></app-movie-detail>
 
   </mat-card>

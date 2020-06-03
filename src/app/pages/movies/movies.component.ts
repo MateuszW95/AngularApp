@@ -52,4 +52,26 @@ export class MoviesComponent implements OnInit {
     });
   }
 
+  getTheOldestMovie(): Movie {
+    let minMovie: Movie = null;
+    if (this.movies) {
+
+      this.movies.forEach(m => {
+        if (!minMovie) {
+          minMovie = m;
+        } else {
+          if (new Date(m.released).getMilliseconds() < new Date(minMovie.released).getMilliseconds()) {
+            minMovie = m;
+          }
+        }
+      });
+    }
+    return minMovie;
+  }
+
+  getDate(movie: Movie) {
+    return new Date(movie.released);
+  }
 }
+
+
