@@ -8,17 +8,21 @@ import {formatDate} from '@angular/common';
 })
 export class MovieService {
 
-  private BASE_URL = 'https://mw95app.herokuapp.com/api';
+  private BASE_URL = 'https://mw95app.herokuapp.com';
 
   constructor(private http: HttpClient) {
   }
 
+  getBaseUrl() {
+    return this.BASE_URL;
+  }
+
   getMovies() {
-    return this.http.get<Movie[]>(this.BASE_URL + '/movies');
+    return this.http.get<Movie[]>('/api/movies');
   }
 
   updateMovie(movie: Movie) {
-    return this.http.patch(this.BASE_URL + '/movie/' + movie._id, {
+    return this.http.patch('/api/movie/' + movie._id, {
       title: movie.title,
       description: movie.description,
       genre: movie.genre,
@@ -29,6 +33,6 @@ export class MovieService {
   }
 
   deleteMovie(id: string) {
-    return this.http.delete(this.BASE_URL + '/movie/' + id);
+    return this.http.delete('/api/movie/' + id);
   }
 }

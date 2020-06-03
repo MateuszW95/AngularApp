@@ -1,6 +1,7 @@
 {
-  "/api": {
-    "target": "https://mw-angular.herokuapp.com/",
-    "secure": false
+  "/api/*": {
+    "target": "https://mw95app.herokuapp.com",
+    "secure": false,
+    "logLevel": "debug"
   }
 }
