@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "https://mw-angular.herokuapp.com/",
+    "secure": false
+  }
+}
