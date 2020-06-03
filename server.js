@@ -9,6 +9,14 @@ app.use(cors());
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/AngularApp'));
 
+app.all('*', function(req, res, next) {
+  const origin = req.get('origin');
+  res.header('Access-Control-Allow-Origin', origin);
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
 app.get('/*', function(req,res) {
 
   res.sendFile(path.join(__dirname+'/dist/AngularApp/index.html'));
