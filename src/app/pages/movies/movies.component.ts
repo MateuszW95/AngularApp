@@ -26,7 +26,6 @@ export class MoviesComponent implements OnInit {
 
     this.movieSub = this.movieService.getMovies().subscribe(data => {
       this.movies = data;
-      console.log(JSON.stringify(data));
     });
   }
 
@@ -60,7 +59,7 @@ export class MoviesComponent implements OnInit {
         if (!minMovie) {
           minMovie = m;
         } else {
-          if (new Date(m.released).getMilliseconds() < new Date(minMovie.released).getMilliseconds()) {
+          if (Date.parse(m.released) < Date.parse(minMovie.released)) {
             minMovie = m;
           }
         }
